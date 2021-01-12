@@ -28,8 +28,7 @@ def roll_dice(command:str):
     items[1] = items[1].upper()
     amount, dice_size = utils.split_roll_data(items[1], "D")
     
-    if dice_size == 0:
-        return utils.gen_send_data("Misschien moet je niet zo'n wijsneus zijn die gaat proberen een D0 te rollen")
+    
         
     offset = 0
     if "+" in dice_size:
@@ -38,7 +37,11 @@ def roll_dice(command:str):
     
     # Split and check if amount of rolls isn't absurdly high
     amount, dice_size = utils.parse_int(amount), utils.parse_int(dice_size)
-
+    
+    # Check if dice size isn't 0
+    if dice_size == 0:
+        return utils.gen_send_data("Misschien moet je niet zo'n wijsneus zijn die gaat proberen een D0 te rollen")
+    
     # Generate array of random dicerolls
 
     total = 0
