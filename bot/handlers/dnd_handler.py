@@ -27,6 +27,10 @@ def roll_dice(command:str):
     # Splits the xDy into x and y, splitsing on the character 'D' (of 'd' for geklapte jonkos who can't follow basic instructions).
     items[1] = items[1].upper()
     amount, dice_size = utils.split_roll_data(items[1], "D")
+    
+    if dice_size == 0:
+        return utils.gen_send_data("Misschien moet je niet zo'n wijsneus zijn die gaat proberen een D0 te rollen")
+        
     offset = 0
     if "+" in dice_size:
         dice_size, offset = dice_size.split("+")
